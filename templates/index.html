@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SQLite Chat Assistant</title>
+    <script>
+        async function askQuery() {
+            let query = document.getElementById("query").value;
+            let response = await fetch(`/ask?query=${encodeURIComponent(query)}`);
+            let data = await response.json();
+            document.getElementById("response").innerText = "Response: " + data.response;
+        }
+    </script>
+</head>
+<body>
+    <h1>SQLite Chat Assistant</h1>
+    <input type="text" id="query" placeholder="Ask me a question..." />
+    <button onclick="askQuery()">Ask</button>
+    <p id="response"></p>
+</body>
+</html>
